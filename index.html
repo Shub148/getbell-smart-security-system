@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Society Gate Management System</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Login Page -->
+    <div id="loginPage" class="page active">
+        <div class="login-container">
+            <div class="login-card">
+                <h1><i class="fas fa-shield-alt"></i> Society Gate Management</h1>
+                <p>Select your role to continue</p>
+                
+                <div class="role-selection">
+                    <button class="role-btn" data-role="resident">
+                        <i class="fas fa-home"></i>
+                        <span>Resident</span>
+                    </button>
+                    <button class="role-btn" data-role="guard">
+                        <i class="fas fa-user-shield"></i>
+                        <span>Security Guard</span>
+                    </button>
+                    <button class="role-btn" data-role="admin">
+                        <i class="fas fa-cog"></i>
+                        <span>Admin</span>
+                    </button>
+                </div>
+
+                <div id="loginForm" class="login-form hidden">
+                    <h3 id="roleTitle">Login as Resident</h3>
+                    <form id="authForm">
+                        <div class="form-group">
+                            <label class="form-label">Select User</label>
+                            <select id="userSelect" class="form-control" required>
+                                <option value="">Select User</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn--primary btn--full-width">Login</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Application -->
+    <div id="mainApp" class="page">
+        <!-- Header -->
+        <header class="header">
+            <div class="container">
+                <div class="header-content">
+                    <div class="logo">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>Gate Management</span>
+                    </div>
+                    <div class="header-actions">
+                        <div class="user-info">
+                            <span id="currentUser">User Name</span>
+                            <span id="currentRole" class="role-badge">Resident</span>
+                        </div>
+                        <button id="logoutBtn" class="btn btn--outline btn--sm">
+                            <i class="fas fa-sign-out-alt"></i> Logout
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Navigation -->
+        <nav class="nav" id="mainNav">
+            <div class="container">
+                <div class="nav-links" id="navLinks">
+                    <!-- Dynamic navigation based on role -->
+                </div>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main">
+            <div class="container">
+                <div id="dashboardContent">
+                    <!-- Dynamic content based on role and navigation -->
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Emergency Alert Modal -->
+    <div id="emergencyModal" class="modal hidden">
+        <div class="modal-content">
+            <div class="emergency-alert">
+                <div class="emergency-icon">
+                    <i class="fas fa-exclamation-triangle"></i>
+                </div>
+                <h3>Emergency Alert Sent!</h3>
+                <p>Your emergency request has been sent to the security team.</p>
+                <p><strong>Response Time:</strong> <span id="responseTime">--</span></p>
+                <button id="closeEmergencyModal" class="btn btn--primary">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- OTP Modal -->
+    <div id="otpModal" class="modal hidden">
+        <div class="modal-content">
+            <h3>Visitor OTP Generated</h3>
+            <div class="otp-display">
+                <span id="generatedOTP">----</span>
+            </div>
+            <p>Share this OTP with the visitor for entry verification.</p>
+            <button id="closeOtpModal" class="btn btn--primary">Close</button>
+        </div>
+    </div>
+
+    <!-- Confirmation Modal -->
+    <div id="confirmModal" class="modal hidden">
+        <div class="modal-content">
+            <h3 id="confirmTitle">Confirm Action</h3>
+            <p id="confirmMessage">Are you sure?</p>
+            <div class="modal-actions">
+                <button id="confirmYes" class="btn btn--primary">Yes</button>
+                <button id="confirmNo" class="btn btn--outline">No</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notifications -->
+    <div id="toastContainer" class="toast-container"></div>
+
+    <script src="app.js"></script>
+</body>
+</html>
